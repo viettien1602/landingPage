@@ -6,22 +6,22 @@ const validate = require('../validators/testStudentInfo');
 //POST router
 router.post('/', async (req, res) => {
     if (!validate.testMail(req.body.mail)) 
-        return res.status(400).send('Invalid email.');
+        return returnJson(res, false, 400, 'Invalid email!');
     if (!validate.testPhone(req.body.phone)) 
-        return res.status(400).send('Invalid phone number.');
+        return returnJson(res, false, 400, 'Invalid phone number!');
     if (!validate.testFace(req.body.facebook)) 
-        return res.status(400).send('Invalid facebook.');
+        return returnJson(res, false, 400, 'Invalid facebook url!');
     if (!validate.testName(req.body.name)) 
-        return res.status(400).send('Invalid name.');
+        return returnJson(res, false, 400, 'Invalid name!');
     if (!validate.testStudentCode(req.body.studentCode)) 
-        return res.status(400).send('Invalid student code.');
+        return returnJson(res, false, 400, 'Invalid student code!');
 
     if ((await Students.find({mail: req.body.mail})).length) 
-        return res.status(400).send('Email has been used.');
+        return returnJson(res, false, 400, 'Email has been used!');
     if ((await Students.find({phone: req.body.phone})).length) 
-        return res.status(400).send('Phone number has been used.');
+        return returnJson(res, false, 400, 'Phone number has been used!');
     if ((await Students.find({studentCode: req.body.studentCode})).length) 
-        return res.status(400).send('Student code has been used.');
+        return returnJson(res, false, 400, 'Student code has been used!');
 
     let student = new Students({
         mail: req.body.mail,
@@ -32,10 +32,28 @@ router.post('/', async (req, res) => {
     });
     try {
         let result = await student.save();
-        res.send('Registered successfully.');
+        res.json({
+            success: true,
+            status: {
+                code: 200,
+                message: 'Registered successfully!'
+            }
+        })
     }
     catch(e) {
-        res.status(400).send(e.errors);
+        returnJson(res, false, 400, 'Registered failed!');
     }
 });
+
+//Return json
+function returnJson(res, success, code, message) {
+    return res.json({
+        success: success,
+        error: {
+            code: code,
+            message: message
+        }
+    });
+}
+
 module.exports = router;

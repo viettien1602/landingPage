@@ -1,5 +1,5 @@
 function testMail(mail) {
-    let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    let emailPattern = /^[a-zA-Z0-9._-]+@fpt.edu.vn$/;
     return emailPattern.test(mail);
 }
 
@@ -9,7 +9,7 @@ function testPhone(phone) {
 }
 
 function testFace(face) {
-    let facePattern = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/.(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)/;
+    let facePattern = /^(?:https?:\/\/)?(?:www\.)?(?:facebook|fb)\.com\/.(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)/;
     return facePattern.test(face);
 }
 
