@@ -68,7 +68,7 @@ router.get('/callback',
                 status: {
                     code: 200,
                     message: 'Signed in successfully!'
-                },
+                }
             });
         }  
         else {
