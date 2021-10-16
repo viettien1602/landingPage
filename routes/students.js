@@ -4,9 +4,7 @@ const Students = require('../models/student');
 const validate = require('../validators/testStudentInfo');
 
 //POST router
-router.post('/', async (req, res) => {
-    if (!validate.testMail(req.body.mail)) 
-        return returnJson(res, false, 400, 'Invalid email!');
+router.put('/', async (req, res) => {
     if (!validate.testPhone(req.body.phone)) 
         return returnJson(res, false, 400, 'Invalid phone number!');
     if (!validate.testFace(req.body.facebook)) 
@@ -16,20 +14,17 @@ router.post('/', async (req, res) => {
     if (!validate.testStudentCode(req.body.studentCode)) 
         return returnJson(res, false, 400, 'Invalid student code!');
 
-    if ((await Students.find({mail: req.body.mail})).length) 
-        return returnJson(res, false, 400, 'Email has been used!');
-    if ((await Students.find({phone: req.body.phone})).length) 
-        return returnJson(res, false, 400, 'Phone number has been used!');
-    if ((await Students.find({studentCode: req.body.studentCode})).length) 
-        return returnJson(res, false, 400, 'Student code has been used!');
+    let student = (await Students.find({email: req.body.email}))[0];
+    if (student.step === 3) 
+        return returnJson(res, false, 400, 'Already registered!');
+    
 
-    let student = new Students({
-        mail: req.body.mail,
-        phone: req.body.phone,
-        facebook: req.body.facebook,
-        name: req.body.name,
-        studentCode: req.body.studentCode
-    });
+    student.phone = req.body.phone;
+    student.facebook = req.body.facebook;
+    student.name = req.body.name;
+    student.studentCode = req.body.studentCode;
+    student.step = 3;
+
     try {
         let result = await student.save();
         res.json({
@@ -38,7 +33,7 @@ router.post('/', async (req, res) => {
                 code: 200,
                 message: 'Registered successfully!'
             }
-        })
+        });
     }
     catch(e) {
         returnJson(res, false, 400, 'Registered failed!');
@@ -49,7 +44,7 @@ router.post('/', async (req, res) => {
 function returnJson(res, success, code, message) {
     return res.json({
         success: success,
-        error: {
+        status: {
             code: code,
             message: message
         }

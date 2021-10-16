@@ -2,7 +2,11 @@ const express = require('express');
 const app = express();
 const students = require('./routes/students');
 const login = require('./routes/loginGG');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+
+dotenv.config();
 
 mongoose.connect('mongodb://localhost/landingPage') 
     .then(() => console.log('Connected to mongoDb.'))
@@ -19,10 +23,34 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use('/auth/google', login);
-//jwt verify
+app.use(checkToken);
 app.use('/api/students', students);
 
-
+//Middleware
+function checkToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader.split(' ')[1];
+    if (!token) 
+        return res.json({
+            success: false,
+            status: {
+                code: 401,
+                message: 'Missing token'
+            }
+        });
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, data) => {
+        if (err) 
+            return res.json({
+            success: false,
+            status: {
+                code: 403,
+                message: 'Unauthorized'
+            }
+        });
+        req.body.email = data.email;
+        next();
+    });
+}
 
 //listen on port
 let port = 1000;

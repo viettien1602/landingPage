@@ -1,0 +1,11 @@
+###
+PUT http://localhost:1000/api/students
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmdvIFZpZXQgVGllbiAoSzE2X0hDTSkiLCJlbWFpbCI6InRpZW5udnNlMTYxMjA0QGZwdC5lZHUudm4iLCJpYXQiOjE2MzQzNzc2MjJ9.2KHMZhx3SrGcG-GBj72WGuYtj9xUpsNHy7o56tRJeYU
+Content-Type: application/json
+
+{
+    "phone": "0903678282",
+    "facebook": "fb.com/nvt1602",
+    "name": "Ngô Việt Tiến",
+    "studentCode": "se161204"
+}

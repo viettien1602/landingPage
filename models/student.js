@@ -1,29 +1,29 @@
 const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
-    mail: {
+    email: {
         type: String,
         lowercase: true,
+        required: true
+    },
+    step: {
+        type: Number,
         required: true
     },
     phone: {
-        type: String,
-        required: true,
+        type: String
     },
     facebook: {
         type: String,
-        lowercase: true,
-        required: true
+        lowercase: true
     },
     name: {
         type: String,
-        uppercase: true,
-        required: true
+        uppercase: true
     },
     studentCode: {
         type: String,
-        uppercase: true,
-        required: true
+        uppercase: true
     }
 });
 
