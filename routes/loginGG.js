@@ -55,8 +55,8 @@ router.get('/callback',
                 }
             });
         else {
-            req.logout();
-            req.session.destroy();
+            //req.logout();
+            //req.session.destroy();
             res.json({
                 success: false,
                 status: {
@@ -68,6 +68,5 @@ router.get('/callback',
 });
 
 module.exports = router;
-
 
 

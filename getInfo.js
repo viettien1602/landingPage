@@ -18,8 +18,12 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-app.use('/api/students', students);
 app.use('/auth/google', login);
+//jwt verify
+app.use('/api/students', students);
+
+
+
 //listen on port
 let port = 1000;
 app.listen(port, () => {
