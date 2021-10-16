@@ -14,7 +14,7 @@ router.put('/', async (req, res) => {
     if (!validate.testStudentCode(req.body.studentCode)) 
         return returnJson(res, false, 400, 'Invalid student code!');
 
-    let student = (await Students.find({email: req.body.email}))[0];
+    let student = await Students.findOne({email: req.body.email});
     if (student.step === 3) 
         return returnJson(res, false, 400, 'Already registered!');
     
