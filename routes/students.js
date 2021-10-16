@@ -7,8 +7,6 @@ const validate = require('../validators/testStudentInfo');
 router.put('/', async (req, res) => {
     if (!validate.testPhone(req.body.phone)) 
         return returnJson(res, false, 400, 'Invalid phone number!');
-    if (!validate.testFace(req.body.facebook)) 
-        return returnJson(res, false, 400, 'Invalid facebook url!');
     if (!validate.testName(req.body.name)) 
         return returnJson(res, false, 400, 'Invalid name!');
     if (!validate.testStudentCode(req.body.studentCode)) 
@@ -20,9 +18,10 @@ router.put('/', async (req, res) => {
     
 
     student.phone = req.body.phone;
-    student.facebook = req.body.facebook;
     student.name = req.body.name;
     student.studentCode = req.body.studentCode;
+    student.major = req.body.major;
+    student.semester = req.body.semester;
     student.step = 3;
 
     try {

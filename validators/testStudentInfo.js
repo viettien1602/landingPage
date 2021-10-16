@@ -4,14 +4,14 @@ function testMail(mail) {
 }
 
 function testPhone(phone) {
-    let phonePattern = /^[0-9]{10}$/;
+    let phonePattern = /^0+[0-9]{9}$/;
     return phonePattern.test(phone);
 }
 
-function testFace(face) {
-    let facePattern = /^(?:https?:\/\/)?(?:www\.)?(?:facebook|fb)\.com\/.(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)/;
-    return facePattern.test(face);
-}
+// function testFace(face) {
+//     let facePattern = /^(?:https?:\/\/)?(?:www\.)?(?:facebook|fb)\.com\/.(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)/;
+//     return facePattern.test(face);
+// }
 
 function testName(name) {
     let namePattern = /^[a-zàáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹý ,.'-]+$/i;
@@ -26,7 +26,6 @@ function testStudentCode(code) {
 module.exports = {
     testMail,
     testPhone,
-    testFace,
     testName,
     testStudentCode
 }

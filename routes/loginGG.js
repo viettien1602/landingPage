@@ -70,6 +70,7 @@ router.get('/callback',
                     message: 'Signed in successfully!'
                 }
             });
+            //res.redirect('/', )
         }  
         else {
             req.logout();

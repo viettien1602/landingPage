@@ -13,10 +13,6 @@ const studentSchema = new mongoose.Schema({
     phone: {
         type: String
     },
-    facebook: {
-        type: String,
-        lowercase: true
-    },
     name: {
         type: String,
         uppercase: true
@@ -24,6 +20,12 @@ const studentSchema = new mongoose.Schema({
     studentCode: {
         type: String,
         uppercase: true
+    },
+    major: {
+        type: String,
+    },
+    semester: {
+        type: String
     }
 });
 

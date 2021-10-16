@@ -1,15 +1,16 @@
 ###
 PUT http://localhost:1000/api/students
-Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmdvIFZpZXQgVGllbiAoSzE2X0hDTSkiLCJlbWFpbCI6InRpZW5udnNlMTYxMjA0QGZwdC5lZHUudm4iLCJpYXQiOjE2MzQzOTI2MTN9.wsyps0k9EHgzt9-Ok0xE3i0_o10Ir7_lr9yUp0UYTMM
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmdvIFZpZXQgVGllbiAoSzE2X0hDTSkiLCJlbWFpbCI6InRpZW5udnNlMTYxMjA0QGZwdC5lZHUudm4iLCJpYXQiOjE2MzQ0MDAzNjh9.fK-wXYxNG6p6zOTMp_yNvFQ0Aay_SGgdo1bRjGmxqcw
 Content-Type: application/json
 
 {
     "phone": "0903678282",
-    "facebook": "fb.com/nvt1602",
     "name": "Ngô Việt Tiến",
-    "studentCode": "se161204"
+    "studentCode": "se161204",
+    "major": "Kĩ thuật phần mềm",
+    "semester": "LUK 6"
 }
 
 ###
 GET http://localhost:1000/auth/getStep
-Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmdvIFZpZXQgVGllbiAoSzE2X0hDTSkiLCJlbWFpbCI6InRpZW5udnNlMTYxMjA0QGZwdC5lZHUudm4iLCJpYXQiOjE2MzQzOTI2MTN9.wsyps0k9EHgzt9-Ok0xE3i0_o10Ir7_lr9yUp0UYTM
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmdvIFZpZXQgVGllbiAoSzE2X0hDTSkiLCJlbWFpbCI6InRpZW5udnNlMTYxMjA0QGZwdC5lZHUudm4iLCJpYXQiOjE2MzQ0MDAzNjh9.fK-wXYxNG6p6zOTMp_yNvFQ0Aay_SGgdo1bRjGmxqcw
