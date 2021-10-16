@@ -3,3 +3,4 @@
     + Login gg: http://localhost:1000/auth/google
     + Get step: GET http://localhost:1000/auth/getStep
     + Submit info: PUT http://localhost:1000/api/students
+- Nhớ chạy: npm i với cài đặt mongoDB
