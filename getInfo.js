@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const students = require('./routes/students');
 const login = require('./routes/loginGG');
+const getStep = require('./routes/getStep');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
@@ -23,8 +24,8 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use('/auth/google', login);
-app.use(checkToken);
-app.use('/api/students', students);
+app.use('/auth/getStep', getStep);
+app.use('/api/students', checkToken, students);
 
 //Middleware
 function checkToken(req, res, next) {
