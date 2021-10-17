@@ -9,7 +9,8 @@ const mongoose = require('mongoose');
 
 dotenv.config();
 
-mongoose.connect('mongodb://localhost/landingPage') 
+const db = 'mongodb+srv://landing:Database1602@cluster0.wwlia.mongodb.net/landingPage';
+mongoose.connect(db) 
     .then(() => console.log('Connected to mongoDb.'))
     .catch((e) => console.error('Could not connect to mongoDb.', e));
 

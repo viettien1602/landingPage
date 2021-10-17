@@ -12,12 +12,13 @@ require('https').globalAgent.options.rejectUnauthorized = false;
 
 const GOOGLE_CLIENT_ID = '926286756007-a45pgl0b0j4jvb7192qo75a3md5vc975.apps.googleusercontent.com';
 const GOOGLE_CLIENT_SECRET = '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';
+const callback = 'http://localhost:1000/auth/google/callback';
 
 
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:1000/auth/google/callback"
+    callbackURL: callback
   },
   function(accessToken, refreshToken, profile, cb) {
     return cb(null, profile);
