@@ -5,6 +5,7 @@ const login = require('./routes/loginGG');
 const getStep = require('./routes/getStep');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 dotenv.config();
@@ -23,9 +24,11 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(cors());
+
 app.use(express.json());
-app.use('/auth/google', login);
-app.use('/auth/getStep', getStep);
+app.use('/api/auth/google', login);
+app.use('/api/auth/getStep', getStep);
 app.use('/api/students', checkToken, students);
 
 //Middleware
