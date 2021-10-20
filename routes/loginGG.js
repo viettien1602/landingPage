@@ -13,7 +13,7 @@ require('https').globalAgent.options.rejectUnauthorized = false;
 const GOOGLE_CLIENT_ID = '926286756007-hv2emthc7jb6tjvh0m2j1jjinnv2ftba.apps.googleusercontent.com';
 const GOOGLE_CLIENT_SECRET = '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';
 const callback = 'http://localhost:1000/auth/google/callback';
-const redirectUrl = 'http://localhost:1000'
+const redirectUrl = 'http://localhost:1000';
 
 
 passport.use(new GoogleStrategy({
